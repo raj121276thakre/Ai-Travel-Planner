@@ -62,3 +62,5 @@ export const SelectBudgetOptions = [
     //     icon: '👑', // Crown emoji, symbolizing ultra-luxury
     // }
 ];
+
+export const AI_PROMPT = 'Generate Travel Plan for Location :Goa, India , for {totalDays} Days and {totalNights} Night for {traveler} with a {budget} budget with a Flight details, Flight Price with Booking url, Hotels Options list with HotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and Places to visit nearby with placeName, Place Details, Place Image Url, Geo coordinates, ticket pricing, Time to Travel each of the location for {totalDays} Days and {totalNights} Night with each day plan with best time to visit in JSON format'

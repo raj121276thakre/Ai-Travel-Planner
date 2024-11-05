@@ -214,7 +214,7 @@ export default function ReviewTrip() {
 
       {/* button */}
       <TouchableOpacity
-        //  onPress={onClickContinue}
+         onPress={()=>router.replace('create-trip/generate-trip')}
         style={{
           padding: 15,
           backgroundColor: Colors.Primary,
