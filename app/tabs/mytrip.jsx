@@ -22,6 +22,7 @@ export default function MyTrip() {
 
   useEffect(() => {
     user && GetMyTrips();
+    
   }, [user]);
 
   const GetMyTrips = async () => {
@@ -37,7 +38,9 @@ export default function MyTrip() {
       setUserTrips((prev) => [...prev, doc.data()]);
     });
     setLoading(false);
+    console.log(".........User Trips data->.....",userTrips)
   };
+
 
   return (
     <ScrollView
@@ -72,7 +75,8 @@ export default function MyTrip() {
         </Text>
 
         <TouchableOpacity
-          onPress={() => router.push("/create-trip/search-place")}
+          //onPress={() => router.push("/create-trip/search-place")}
+          onPress={() => router.push('/create-trip/select-traveler')}
         >
           <Ionicons name="add-circle" size={50} color="black" />
         </TouchableOpacity>

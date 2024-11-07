@@ -4,22 +4,31 @@ import moment from "moment";
 import { Colors } from "./../../constants/Colors";
 import { TouchableOpacity } from "react-native";
 import UserTripCard from "./UserTripCard";
+import { useRouter } from "expo-router";
 
 export default function UserTripList({ userTrips }) {
   const LatestTrip = JSON.parse(userTrips[0].tripData);
+  const router = useRouter();
 
   return (
     <View>
       <View>
         {LatestTrip?.locationInfo?.photoRef ? (
-          <Image source={{ uri: 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference='+LatestTrip.locationInfo?.photoRef+'&key='+process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY }} 
-          style={{
-            width: "100%",
-            height: 240,
-            objectFit: "cover",
-            borderRadius: 15,
-            marginTop: 20,
-          }}
+          <Image
+            source={{
+              uri:
+                "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" +
+                LatestTrip.locationInfo?.photoRef +
+                "&key=" +
+                process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY,
+            }}
+            style={{
+              width: "100%",
+              height: 240,
+              objectFit: "cover",
+              borderRadius: 15,
+              marginTop: 20,
+            }}
           />
         ) : (
           <Image
@@ -78,6 +87,12 @@ export default function UserTripList({ userTrips }) {
           </View>
 
           <TouchableOpacity
+            onPress={()=>
+              router.push({
+                pathname: "trip-details",
+                params: { trip: JSON.stringify(userTrips[0]) },
+              })
+            }
             style={{
               backgroundColor: Colors.Primary,
               padding: 15,

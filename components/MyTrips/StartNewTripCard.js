@@ -38,8 +38,8 @@ export default function StartNewTripCard() {
             </Text>
 
             <TouchableOpacity
-                onPress={() => router.push('/create-trip/search-place')}
-            // onPress={() => router.push('/create-trip/select-traveler')}
+                 onPress={() => router.push('/create-trip/search-place')}
+            //onPress={() => router.push('/create-trip/select-traveler')}
             >
                 <Text style={{
                     fontSize: 17,

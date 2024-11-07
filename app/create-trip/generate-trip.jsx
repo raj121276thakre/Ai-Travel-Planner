@@ -19,7 +19,15 @@ export default function GenerateTrip() {
     GenerateAiTrip();
   }, []);
 
+  // useEffect(() => {
+  //   if (tripData) {
+  //     GenerateAiTrip();
+  //   }
+  // }, [tripData]);
+
   const GenerateAiTrip = async () => {
+
+    try {
     setLoading(true);
     // .replace(
     //     "{location}",
@@ -36,13 +44,13 @@ export default function GenerateTrip() {
       .replace("{totalNights}", tripData?.totalNoOfDays - 1);
 
     console.log(FINAL_PROMPT);
+
     const result = await chatSession.sendMessage(FINAL_PROMPT);
-    console.log(result.response.text());
+   // console.log(result.response.text());
     const tripResp = JSON.parse(result.response.text());
-    setLoading(false);
+
+   // setLoading(false);
     const docId = Date.now().toString();
-
-
     //  const result_ =
     await setDoc(doc(db, "UserTrips", docId), {
       userEmail: user.email,
@@ -50,9 +58,14 @@ export default function GenerateTrip() {
       tripData: JSON.stringify(tripData), // User Selection
       docId: docId,
     });
-    console.log('.........Data saved..........');
+    console.log(".........Data saved..........");
 
     router.push("./../tabs/mytrip");
+  } catch (error) {
+    console.error("Error generating trip:", error);
+  } finally {
+    setLoading(false);
+  }
   };
 
   return (

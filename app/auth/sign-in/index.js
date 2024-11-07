@@ -42,6 +42,10 @@ export default function SignIn() {
         if (errorCode == "auth/invalid-credential") {
           ToastAndroid.show('Invalid Credentials', ToastAndroid.LONG);
         }
+        if (errorCode == "auth/network-request-failed") {
+          ToastAndroid.show('Network error, Please check your connection', ToastAndroid.LONG);
+        }
+
       });
   }
 

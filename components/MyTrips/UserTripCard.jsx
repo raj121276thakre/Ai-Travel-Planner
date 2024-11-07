@@ -2,8 +2,10 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import moment from "moment";
 import { Colors } from "./../../constants/Colors";
+import { useRouter } from 'expo-router';
 
 export default function UserTripCard({ trip }) {
+  const router = useRouter();
   const formatData = (data) => {
     return JSON.parse(data);
   };
